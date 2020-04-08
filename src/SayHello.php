@@ -12,4 +12,9 @@ class SayHello
     {
         return 'hello world';
     }
+
+    function index()
+    {
+        echo 1;
+    }
 }
