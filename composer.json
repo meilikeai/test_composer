@@ -1,5 +1,5 @@
 {
-  "name": "peipei/functions",
+  "name": "peipei/meilikeai",
   "description": "any functions",
   "license": "mit",
   "authors": [
@@ -11,7 +11,7 @@
   "require": {},
   "autoload": {
     "psr-4": {
-      "functions\\": "src/"
+      "meilikeai\\": "src/"
     }
   }
 }
