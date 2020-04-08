@@ -13,7 +13,7 @@ class SayHello
         return 'hello world';
     }
 
-    function index()
+    public static function index()
     {
         echo 1;
     }
