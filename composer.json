@@ -1,0 +1,17 @@
+{
+  "name": "peipei/functions",
+  "description": "any functions",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "meilikeai0123",
+      "email": "122528759@qq.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "functions\\": "src/"
+    }
+  }
+}
