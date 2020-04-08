@@ -32,3 +32,11 @@ use meilikeai\wechat\Auth;
  */
 Auth::getAccessToken($wx_config = [], $reset = false, $expire = '7200')
 ```
+
+##### 常用验证类
+```
+use meilikeai\tool\ToolValidate;
+
+is_idcard / is_email / is_zipcode / is_empty
+
+```

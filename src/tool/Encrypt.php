@@ -1,6 +1,6 @@
 <?php
 
-namespace meilikeai\functions;
+namespace meilikeai\tool;
 
 /**
  * notes: Encrypt
@@ -11,7 +11,7 @@ class Encrypt
 {
     /**
      * 加解密函数
-     * @param string $string  要加密的字符串
+     * @param string $string 要加密的字符串
      * @param string $operation 操作  encode/decode
      * @param string $key 加密key
      * @param int $expiry 有效期
