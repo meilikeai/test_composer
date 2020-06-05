@@ -2,11 +2,6 @@
 
 namespace meilikeai\tool;
 
-/**
- * notes: Common
- * author: peipei
- * date: 2020/4/8 15:10
- */
 class Tool
 {
     /**
