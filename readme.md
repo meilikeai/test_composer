@@ -16,3 +16,12 @@
 - mbsubstr 字符串截取，支持中文和其他编码
 - object_to_array 对象转数组
 - array_to_object 数组转对象
+
+
+
+##### \meilikeai\tool\Validate;
+- is_email 判断是否为邮箱
+- is_zipcode 验证邮编是否正确
+- is_idcard 验证身份证是否正确
+- is_empty 判断是否为空
+
