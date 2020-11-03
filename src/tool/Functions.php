@@ -2,7 +2,7 @@
 
 namespace meilikeai\tool;
 
-class Tool
+class Functions
 {
     /**
      * 将字节转换为可读文本
@@ -46,14 +46,14 @@ class Tool
     }
 
     /**
-     *
+     * DES加密
      * @param string $str 加密字符串
      * @param string $key 加密KEY
      * @return string
      * @author 牧羊人
      * @date 2019/6/6
      */
-    public static function encrypt($str, $key = 'p@ssw0rd')
+    public static function encrypt_des($str, $key = 'p@ssw0rd')
     {
         $prep_code = serialize($str);
         $block = mcrypt_get_block_size('des', 'ecb');
@@ -72,7 +72,7 @@ class Tool
      * @author 牧羊人
      * @date 2019/6/6
      */
-    public static function decrypt($str, $key = 'p@ssw0rd')
+    public static function decrypt_des($str, $key = 'p@ssw0rd')
     {
         $str = base64_decode($str);
         $str = mcrypt_decrypt(MCRYPT_DES, $key, $str, MCRYPT_MODE_ECB);
@@ -293,4 +293,40 @@ class Tool
         return $suffix ? $slice . $suffix : $slice;
     }
 
+    /**
+     * 对象转数组
+     * @param object $obj 对象
+     * @return array
+     */
+    function object_to_array($obj)
+    {
+        $obj = (array)$obj;
+        foreach ($obj as $k => $v) {
+            if (gettype($v) == 'resource') {
+                return;
+            }
+            if (gettype($v) == 'object' || gettype($v) == 'array') {
+                $obj[$k] = (array)object_to_array($v);
+            }
+        }
+        return $obj;
+    }
+
+    /**
+     * 数组转对象
+     * @param array $arr 数组
+     * @return object
+     */
+    function array_to_object($arr)
+    {
+        if (gettype($arr) != 'array') {
+            return;
+        }
+        foreach ($arr as $k => $v) {
+            if (gettype($v) == 'array' || getType($v) == 'object') {
+                $arr[$k] = (object)array_to_object($v);
+            }
+        }
+        return (object)$arr;
+    }
 }
