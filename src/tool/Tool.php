@@ -46,54 +46,6 @@ class Tool
     }
 
     /**
-     * curl请求(支持get和post)
-     * @param $url 请求地址
-     * @param array $data 请求参数
-     * @param string $type 请求类型(默认：post)
-     * @param bool $https 是否https请求true或false
-     * @return bool|string 返回请求结果
-     * @author 牧羊人
-     * @date 2019/4/5
-     */
-    public static function curl_request($url, $data = [], $type = 'post', $https = false)
-    {
-        // 初始化
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)');
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-        // 设置超时时间
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        // 是否要求返回数据
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        if ($https) {
-            // 对认证证书来源的检查
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            // 从证书中检查SSL加密算法是否存在
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        }
-        if (strtolower($type) == 'post') {
-            // 设置post方式提交
-            curl_setopt($ch, CURLOPT_POST, true);
-            // 提交的数据
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        } elseif (!empty($data) && is_array($data)) {
-            // get网络请求
-            $url = $url . '?' . http_build_query($data);
-        }
-        // 设置抓取的url
-        curl_setopt($ch, CURLOPT_URL, $url);
-        // 执行命令
-        $result = curl_exec($ch);
-        if ($result === false) {
-            return false;
-        }
-        // 关闭URL请求(释放句柄)
-        curl_close($ch);
-        return $result;
-    }
-
-    /**
      *
      * @param string $str 加密字符串
      * @param string $key 加密KEY

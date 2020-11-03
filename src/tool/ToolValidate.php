@@ -7,13 +7,13 @@ namespace meilikeai\tool;
  * author: peipei
  * date: 2020/4/8 15:45
  */
-class ToolValidate
+class Validate
 {
     /**
      * 判断是否为邮箱
      * @param string $str 邮箱
      * @return false 返回结果true或false
-     * @author 牧羊人
+     * @author peipei
      * @date 2019/4/5
      */
     public static function is_email($str)
@@ -25,7 +25,7 @@ class ToolValidate
      * 验证邮编是否正确
      * @param string $code 邮编
      * @return false 返回结果true或false
-     * @author 牧羊人
+     * @author peipei
      * @date 2019/4/5
      */
     public static function is_zipcode($code)
@@ -37,7 +37,7 @@ class ToolValidate
      * 验证身份证是否正确
      * @param string $idno 身份证号
      * @return bool 返回结果true或false
-     * @author 牧羊人
+     * @author peipei
      * @date 2019/4/5
      */
     public static function is_idcard($idno)
@@ -92,7 +92,7 @@ class ToolValidate
      * 判断是否为空
      * @param $value 参数值
      * @return bool 返回结果true或false
-     * @author 牧羊人
+     * @author peipei
      * @date 2019/4/5
      */
     public static function is_empty($value)
