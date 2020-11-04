@@ -121,4 +121,14 @@ class Validate
         return false;
     }
 
+    /**
+     * 验证ip是否属于内网
+     * @param $ip 要验证的ip
+     * @return bool
+     */
+    function is_intranet($ip)
+    {
+        $rs = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
+        return $rs === false;
+    }
 }

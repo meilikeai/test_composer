@@ -1,3 +1,8 @@
+#### Installtion
+```
+composer require peipei/meilikeai
+```
+
 ### 个人常用方法收集
 
 
@@ -16,6 +21,9 @@
 - mbsubstr 字符串截取，支持中文和其他编码
 - object_to_array 对象转数组
 - array_to_object 数组转对象
+- is_mobile 检测当前设备是否为手机
+- is_intranet 验证ip是否属于内网
+
 
 
 
