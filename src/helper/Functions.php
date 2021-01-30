@@ -5,15 +5,10 @@ namespace meilikeai\helper;
 class Functions
 {
 
-
-
-
     /**
      * 格式化手机号码
      * @param string $mobile 手机号码
      * @return string 返回结果
-     * @author 牧羊人
-     * @date 2019/4/5
      */
     public static function format_mobile($mobile)
     {
@@ -25,8 +20,6 @@ class Functions
      * @param int $length 长度
      * @param int $type 类型(0：混合；1：纯数字)
      * @return string 返回结果
-     * @author 牧羊人
-     * @date 2019/4/5
      */
     public static function get_random_str($length = 16, $type = 1)
     {
@@ -48,8 +41,6 @@ class Functions
     /**
      * 获取服务端IP地址
      * @return string 返回IP地址
-     * @author 牧羊人
-     * @date 2019/4/5
      */
     public static function get_server_ip()
     {
@@ -70,8 +61,6 @@ class Functions
      * @param int $type 返回类型 0 返回IP地址 1 返回IPV4地址数字
      * @param bool $adv 否进行高级模式获取（有可能被伪装）
      * @return mixed 返回IP
-     * @author 牧羊人
-     * @date 2019/4/5
      */
     public static function get_client_ip($type = 0, $adv = false)
     {
