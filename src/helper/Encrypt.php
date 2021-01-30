@@ -1,6 +1,6 @@
 <?php
 
-namespace meilikeai\tool;
+namespace meilikeai\helper;
 
 /**
  * notes: Encrypt
@@ -59,5 +59,40 @@ class Encrypt
         } else {
             return $keyc . str_replace('=', '', base64_encode($result));
         }
+    }
+
+    /**
+     * DES加密
+     * @param string $str 加密字符串
+     * @param string $key 加密KEY
+     * @return string
+     */
+    public static function encrypt_des($str, $key = 'p@ssw0rd')
+    {
+        $prep_code = serialize($str);
+        $block = mcrypt_get_block_size('des', 'ecb');
+        if (($pad = $block - (strlen($prep_code) % $block)) < $block) {
+            $prep_code .= str_repeat(chr($pad), $pad);
+        }
+        $encrypt = mcrypt_encrypt(MCRYPT_DES, $key, $prep_code, MCRYPT_MODE_ECB);
+        return base64_encode($encrypt);
+    }
+
+    /**
+     * DES解密
+     * @param string $str 解密字符串
+     * @param string $key 解密KEY
+     * @return mixed
+     */
+    public static function decrypt_des($str, $key = 'p@ssw0rd')
+    {
+        $str = base64_decode($str);
+        $str = mcrypt_decrypt(MCRYPT_DES, $key, $str, MCRYPT_MODE_ECB);
+        $block = mcrypt_get_block_size('des', 'ecb');
+        $pad = ord($str[($len = strlen($str)) - 1]);
+        if ($pad && $pad < $block && preg_match('/' . chr($pad) . '{' . $pad . '}$/', $str)) {
+            $str = substr($str, 0, strlen($str) - $pad);
+        }
+        return unserialize($str);
     }
 }

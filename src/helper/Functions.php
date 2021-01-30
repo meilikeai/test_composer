@@ -1,88 +1,12 @@
 <?php
 
-namespace meilikeai\tool;
+namespace meilikeai\helper;
 
 class Functions
 {
-    /**
-     * 将字节转换为可读文本
-     * @param int $size 大小
-     * @param string $delimiter 分隔符
-     * @return string
-     */
-    public static function format_bytes($size, $delimiter = '')
-    {
-        $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
-        for ($i = 0; $size >= 1024 && $i < 6; $i++) {
-            $size /= 1024;
-        }
-        return round($size, 2) . $delimiter . $units[$i];
-    }
 
-    /**
-     * 判断文件或文件夹是否可写
-     * @param string $file 文件或目录
-     * @return    bool
-     */
-    public static function is_really_writable($file)
-    {
-        if (DIRECTORY_SEPARATOR === '/') {
-            return is_writable($file);
-        }
-        if (is_dir($file)) {
-            $file = rtrim($file, '/') . '/' . md5(mt_rand());
-            if (($fp = @fopen($file, 'ab')) === false) {
-                return false;
-            }
-            fclose($fp);
-            @chmod($file, 0777);
-            @unlink($file);
-            return true;
-        } elseif (!is_file($file) or ($fp = @fopen($file, 'ab')) === false) {
-            return false;
-        }
-        fclose($fp);
-        return true;
-    }
 
-    /**
-     * DES加密
-     * @param string $str 加密字符串
-     * @param string $key 加密KEY
-     * @return string
-     * @author 牧羊人
-     * @date 2019/6/6
-     */
-    public static function encrypt_des($str, $key = 'p@ssw0rd')
-    {
-        $prep_code = serialize($str);
-        $block = mcrypt_get_block_size('des', 'ecb');
-        if (($pad = $block - (strlen($prep_code) % $block)) < $block) {
-            $prep_code .= str_repeat(chr($pad), $pad);
-        }
-        $encrypt = mcrypt_encrypt(MCRYPT_DES, $key, $prep_code, MCRYPT_MODE_ECB);
-        return base64_encode($encrypt);
-    }
 
-    /**
-     * DES解密
-     * @param string $str 解密字符串
-     * @param string $key 解密KEY
-     * @return mixed
-     * @author 牧羊人
-     * @date 2019/6/6
-     */
-    public static function decrypt_des($str, $key = 'p@ssw0rd')
-    {
-        $str = base64_decode($str);
-        $str = mcrypt_decrypt(MCRYPT_DES, $key, $str, MCRYPT_MODE_ECB);
-        $block = mcrypt_get_block_size('des', 'ecb');
-        $pad = ord($str[($len = strlen($str)) - 1]);
-        if ($pad && $pad < $block && preg_match('/' . chr($pad) . '{' . $pad . '}$/', $str)) {
-            $str = substr($str, 0, strlen($str) - $pad);
-        }
-        return unserialize($str);
-    }
 
     /**
      * 格式化手机号码
@@ -183,9 +107,7 @@ class Functions
      *
      * @param string $month 月
      * @param string $day 日
-     * @return boolean|multitype:
-     * @author 牧羊人
-     * @date 2019-04-04
+     * @return boolean|string:
      */
     public static function get_zodiac_sign($month, $day)
     {
@@ -219,8 +141,6 @@ class Functions
      * 获取格式化显示时间
      * @param int $time 时间戳
      * @return false|string 返回结果
-     * @author 牧羊人
-     * @date 2019/4/5
      */
     public static function get_format_time($time)
     {
@@ -243,24 +163,6 @@ class Functions
         return $str;
     }
 
-    /**
-     * 递归创建目录
-     * @param string $dir 需要创建的目录路径
-     * @param int $mode 权限值
-     * @return bool 返回结果true或false
-     * @author 牧羊人
-     * @date 2019/6/6
-     */
-    public static function mkdirs($dir, $mode = 0777)
-    {
-        if (is_dir($dir) || mkdir($dir, $mode, true)) {
-            return true;
-        }
-        if (!mkdirs(dirname($dir), $mode)) {
-            return false;
-        }
-        return mkdir($dir, $mode, true);
-    }
 
     /**
      * 字符串截取，支持中文和其他编码
@@ -270,8 +172,6 @@ class Functions
      * @param string $encoding 编码格式
      * @param string $suffix 截断显示字符
      * @return false|mixed|string 返回结果
-     * @author 牧羊人
-     * @date 2019/6/28
      */
     public static function mbsubstr($str, $start = 0, $length = null, $encoding = "utf-8", $suffix = '...')
     {
@@ -360,7 +260,6 @@ class Functions
                 substr($_SERVER['HTTP_USER_AGENT'], 0, 4))) {
             return true;
         }
-
         return false;
     }
 

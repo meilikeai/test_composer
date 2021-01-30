@@ -1,6 +1,6 @@
 <?php
 
-namespace meilikeai\tool;
+namespace meilikeai\helper;
 
 /**
  * notes: Validate
@@ -101,29 +101,36 @@ class Validate
         if (!isset($value)) {
             return true;
         }
-
         // 判断是否为empty
         if (empty($value)) {
             return true;
         }
-
         // 判断是否为空字符串
         if (trim($value) === '') {
             return true;
         }
-
         // 默认返回false
         return false;
     }
 
     /**
      * 验证ip是否属于内网
-     * @param $ip 要验证的ip
+     * @param $ip string 要验证的ip
      * @return bool
      */
     function is_intranet($ip)
     {
         $rs = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
         return $rs === false;
+    }
+
+    /**
+     * 验证url是否正确
+     * @param string $url url地址
+     * @return bool 如果URL有效，则返回true，否则返回false
+     */
+    public static function validateURL($url)
+    {
+        return (bool) filter_var($url, FILTER_VALIDATE_URL);
     }
 }
