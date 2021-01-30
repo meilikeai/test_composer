@@ -181,8 +181,8 @@ class Functions
     /**
      * 根据月、日获取星座
      *
-     * @param unknown $month 月
-     * @param unknown $day 日
+     * @param string $month 月
+     * @param string $day 日
      * @return boolean|multitype:
      * @author 牧羊人
      * @date 2019-04-04

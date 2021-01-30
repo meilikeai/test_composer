@@ -107,11 +107,6 @@ class Validate
             return true;
         }
 
-        // 判断是否为null
-        if ($value === null) {
-            return true;
-        }
-
         // 判断是否为空字符串
         if (trim($value) === '') {
             return true;
