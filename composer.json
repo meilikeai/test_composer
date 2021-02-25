@@ -1,19 +1,13 @@
 {
-  "name": "jltech/helper",
-  "description": "Some useful methods",
-  "license": "Unlicense",
-  "authors": [
-    {
-      "name": "裴琼尧",
-      "email": "122528759@qq.com"
-    }
-  ],
-  "require": {
-    "php-curl-class/php-curl-class": "^8.9"
-  },
-  "autoload": {
-    "psr-4": {
-      "meilikeai\\": "src/"
-    }
-  }
+    "name": "jltech/helper",
+    "description": "jltech",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "裴琼尧",
+            "email": "122528759@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
 }
