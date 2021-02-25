@@ -1,7 +1,6 @@
 <?php
 
-
-namespace meilikeai\helper;
+namespace meilikeai;
 
 /**
  * Class Curl 网络请求类

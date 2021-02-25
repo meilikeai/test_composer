@@ -1,6 +1,6 @@
 <?php
 
-namespace meilikeai\helper;
+namespace meilikeai;
 
 /**
  * notes: Encrypt

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace meilikeai\helper;
+namespace meilikeai;
 
 
 class File
