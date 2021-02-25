@@ -1,6 +1,6 @@
 #### Installtion
 ```
-composer require peipei/meilikeai
+composer require jltech/helper
 ```
 
 

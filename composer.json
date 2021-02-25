@@ -7,5 +7,7 @@
       "email": "122528759@qq.com"
     }
   ],
-  "require": {}
+  "require": {
+    "php-curl-class/php-curl-class": "^8.9"
+  }
 }
