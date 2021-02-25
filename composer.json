@@ -1,18 +1,11 @@
 {
-  "name": "peipei/meilikeai",
-  "description": "any functions",
-  "license": "mit",
+  "name": "jl/helper",
+  "description": "Some useful methods",
   "authors": [
     {
-      "name": "meilikeai0123",
+      "name": "裴琼尧",
       "email": "122528759@qq.com"
     }
   ],
-  "require": {
-  },
-  "autoload": {
-    "psr-4": {
-      "meilikeai\\": "src/"
-    }
-  }
+  "require": {}
 }
