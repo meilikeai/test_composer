@@ -1,12 +1,19 @@
 {
   "name": "meilikeai/wangqianlan",
-  "description": "this is functions",
+  "description": "this is tools.",
   "license": "MIT",
   "authors": [
     {
-      "name": "meilikeai",
-      "email": "meilikeai0123@gmail.com"
+      "name": "pqy",
+      "email": "122528759@qq.com"
     }
   ],
-  "require": {}
+  "require": {
+    "php": ">=5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "meilikeai\\wangqianlan\\": "src"
+    }
+  }
 }

@@ -14,7 +14,7 @@ class  Helper
      * @param string $str 邮箱
      * @return false 返回结果true或false
      */
-    function is_email($str)
+    public static function is_email($str)
     {
         return preg_match('/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/', $str);
     }
@@ -24,7 +24,7 @@ class  Helper
      * @param string $code 邮编
      * @return false 返回结果true或false
      */
-    function is_zipcode($code)
+    public static function is_zipcode($code)
     {
         return preg_match('/^[1-9][0-9]{5}$/', $code);
     }
@@ -34,7 +34,7 @@ class  Helper
      * @param string $idno 身份证号
      * @return bool 返回结果true或false
      */
-    function is_idcard($idno)
+    public static function is_idcard($idno)
     {
         $idno = strtoupper($idno);
         $regx = '/(^\d{15}$)|(^\d{17}([0-9]|X)$)/';
@@ -87,7 +87,7 @@ class  Helper
      * @param $ip string 要验证的ip
      * @return bool
      */
-    function is_intranet($ip)
+    public static function is_intranet($ip)
     {
         $rs = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
         return $rs === false;
@@ -98,7 +98,7 @@ class  Helper
      * @param string $url url地址
      * @return bool 如果URL有效，则返回true，否则返回false
      */
-    function validateURL($url)
+    public static function validateURL($url)
     {
         return (bool)filter_var($url, FILTER_VALIDATE_URL);
     }
@@ -110,7 +110,7 @@ class  Helper
      * @param string $day 日
      * @return boolean|string:
      */
-    function get_zodiac_sign($month, $day)
+    public static function get_zodiac_sign($month, $day)
     {
         // 检查参数有效性
         if ($month < 1 || $month > 12 || $day < 1 || $day > 31) {
@@ -143,7 +143,7 @@ class  Helper
      * @param int $time 时间戳
      * @return false|string 返回结果
      */
-    function get_format_time($time)
+    public static function get_format_time($time)
     {
         $time = (int)substr($time, 0, 10);
         $int = time() - $time;
@@ -173,7 +173,7 @@ class  Helper
      * @param string $suffix 截断显示字符
      * @return false|string 返回结果
      */
-    function mbSubstr($str, $start = 0, $length = null, $suffix = '...', $encoding = "utf-8")
+    public static function mbSubstr($str, $start = 0, $length = null, $suffix = '...', $encoding = "utf-8")
     {
         if (function_exists("mb_substr")) {
             $slice = mb_substr($str, $start, $length, $encoding);
@@ -198,7 +198,7 @@ class  Helper
      * @param object $obj 对象
      * @return array|void
      */
-    function object_to_array($obj)
+    public static function object_to_array($obj)
     {
         $obj = (array)$obj;
         foreach ($obj as $k => $v) {
@@ -217,7 +217,7 @@ class  Helper
      * @param array $arr 数组
      * @return object|void
      */
-    function array_to_object($arr)
+    public static function array_to_object($arr)
     {
         if (gettype($arr) != 'array') {
             return;
@@ -237,7 +237,7 @@ class  Helper
      * @return mixed|string [type]        [description]
      *
      */
-    function format_time_excel($date, $time = false)
+    public static function format_time_excel($date, $time = false)
     {
         if (function_exists('GregorianToJD')) {
             if (is_numeric($date)) {
